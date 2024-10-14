@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Insurance Risk Calculator</title>
+</head>
+<body>
+    <h1>Calculate Age Points</h1>
+    <form id="ageForm">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <button type="submit">Calculate</button>
+    </form>
+      <!--
+      Below prints out the points gained from the users age, this is a temperary field
+      used to test the functionallity of the API. These points will be added to the rest 
+      of the calculations to eventally return the overall risk assessment once we complete
+      all the API functions
+
+      The point are calculated based on the Assignment requirements
+          Age:
+          < 30		- 0 points
+          < 45		- 10 points
+          < 60		- 20 points
+          else		- 30 points
+
+      
+      Front end team feel free to remove this and create the site as you wish, this field is 
+      only intented to showcase that the client is fetching the API data correctly -Nick
+      
+      -->
+    <p id="result">Age Points: <span id="agePoints"></span></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
