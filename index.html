@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Insurance Risk Calculator</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <h1>Calculate Age Points</h1>
@@ -31,6 +32,21 @@
       
       -->
     <p id="result">Age Points: <span id="agePoints"></span></p>
+
+    <!-- Button to complete the risk test -->
+    <div class="btn-container"> 
+        <button class="risk-test-button" id="openModalBtn">Take Risk Test</button>
+    </div>
+ 
+    <!-- This shows the information inside the popup window-->
+    <div id="riskTestModal" class="modal">
+        <div class="modal-inner">
+            <h2>Health Insurance Risk Test</h2>
+            <p>Please complete this test to view your risk assessment.</p>
+            <button id="closeModalBtn">Close</button>
+        </div>
+    </div>
+    
 
     <script src="script.js"></script>
 </body>

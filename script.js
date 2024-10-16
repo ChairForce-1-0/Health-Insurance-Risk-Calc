@@ -6,14 +6,22 @@ const systolic = 120
 const diastolic = 80 
 const familyHistory = 'cancer'
 
-
+const opentBtn = document.getElementById("openModalBtn");
+const closeBtn = document.getElementById("closeModalBtn");
+const modal = document.getElementById("riskTestModal");
+/* Opens the popup window (modal) */
+opentBtn.addEventListener("click", () => {
+    modal.classList.add("open");
+});
+/* Closes the popup window (modal) */
+closeBtn.addEventListener("click", () => {
+    modal.classList.remove("open");
+});
 
 
 
 document.getElementById('ageForm').addEventListener('submit', function(event) {
   event.preventDefault();  
-
-
 
   // Get the age value from the form
   const age = document.getElementById('age').value;
