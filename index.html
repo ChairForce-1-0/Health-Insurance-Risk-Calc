@@ -46,7 +46,7 @@
     <p id="result">BMI: <span id="BMI"></span></p>
     <p id="result">BMI Points: <span id="BMIPoints"></span></p>
 
-    <!-- Button to complete the risk test -->
+    <!-- Button to fill out the risk test -->
     <div class="btn-container"> 
         <button class="risk-test-button" id="openModalBtn">Take Risk Test</button>
     </div>
@@ -54,9 +54,25 @@
     <!-- This shows the information inside the popup window-->
     <div id="riskTestModal" class="modal">
         <div class="modal-inner">
-            <h2>Health Insurance Risk Test</h2>
-            <p>Please complete this test to view your risk assessment.</p>
+            <div id="modalContent">
+                <h2>Health Insurance Risk Test</h2>
+                <p>Please complete this test to view your risk assessment. Upon completion, you will know your risk level for health insurers.</p>
+                <button id="startTestBtn">Start Test</button>
+            </div>
             <button id="closeModalBtn">Close</button>
+        </div>
+    </div>
+    <!-- Summary of answers after test is taken -->
+    <div id="summaryModal" class="modal">
+        <div class = "modal-inner">
+            <h2>Summary of Your Inputs</h2>
+            <p><strong>Age:</strong> <span id="summaryAge"></span></p>
+            <p><strong>Height:</strong> <span id="summaryHeight"></span> meters</p>
+            <p><strong>Weight:</strong> <span id="summaryWeight"></span> lbs</p>
+            <p><strong>Systolic Blood Pressure:</strong> <span id="summarySystolic"></span> mmHg</p>
+            <p><strong>Diastolic Blood Pressure:</strong> <span id="summaryDiastolic"></span> mmHg</p>
+            <p><strong>Family History:</strong> <span id="summaryFamilyHistory"></span></p>
+            <button id="closeSummaryModalBtn">Submit Test</button>         
         </div>
     </div>
     
