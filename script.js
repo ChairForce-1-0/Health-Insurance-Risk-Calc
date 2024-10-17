@@ -1,7 +1,8 @@
 
 // Temperary values, these will later be gathered from user input
-const weight = 160
-const height = 1.8288
+
+
+
 const systolic = 120 
 const diastolic = 80 
 const familyHistory = 'cancer'
@@ -25,6 +26,11 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
 
   // Get the age value from the form
   const age = document.getElementById('age').value;
+  
+  const weight = document.getElementById('weight').value;
+  const heightft = document.getElementById('heightft').value;
+  const heightin = document.getElementById('heightin').value;
+
 
 
   
@@ -37,7 +43,8 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
       body: JSON.stringify({
           age: age,
           weight: weight,   
-          height: height,  
+          heightft: heightft, 
+          heightin: heightin,
           systolic: systolic,
           diastolic: diastolic,
           familyHistory: familyHistory
@@ -45,8 +52,10 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
   })
   .then(response => response.json())
   .then(data => {
-      // Display the age points in the HTML
+      // Display the info from the server in HTML
       document.getElementById('agePoints').textContent = data.agePoints;
+      document.getElementById('BMI').textContent = data.BMI;
+      document.getElementById('BMIPoints').textContent = data.BMIPoints;
   })
   .catch(error => console.error('Error:', error));
 });
