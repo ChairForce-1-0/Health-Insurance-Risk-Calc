@@ -37,7 +37,7 @@ app.post('/calculate-risk', (req, res) => {
 
     // Function to calculate BMI points
     function CalcBMIPoints(BMI) {
-        let BMIPoints = 0;  // Declare BMIPoints at the beginning
+        let BMIPoints = 0;  
         if (BMI < 25 && BMI >= 18.5) {
             BMIPoints = 0;
         } else if (BMI >= 25 && BMI < 30) {
@@ -50,12 +50,62 @@ app.post('/calculate-risk', (req, res) => {
         return BMIPoints;
     }
 
+
+    function CalcSystolicBpPoints(systolic){
+        let systolicPoints = 0
+        if (systolic < 120){
+            systolicPoints = 0;
+
+        } else if (systolic >= 120 && systolic < 130){
+            systolicPoints = 15;
+
+        }else if (systolic >= 130 && systolic < 140){
+            systolicPoints = 30;
+
+        }else if (systolic >= 140 && systolic <= 180){
+            systolicPoints = 75;
+
+        }else if (systolic > 180 ){
+            systolicPoints = 100;
+        } else {
+            systolicPoints = "error";
+        }
+        return systolicPoints
+    }
+
+
+    function CalcDiastolicBpPoints(diastolic){
+        let diastolicPoints = 0
+        if (diastolic < 120){
+            diastolicPoints = 0;
+
+        } else if (diastolic >= 120 && diastolic < 130){
+            diastolicPoints = 15;
+
+        }else if (diastolic >= 130 && diastolic < 140){
+            diastolicPoints = 30;
+
+        }else if (diastolic >= 140 && diastolic <= 180){
+            diastolicPoints = 75;
+
+        }else if (diastolic > 180 ){
+            diastolicPoints = 100;
+        } else {
+            diastolicPoints = "error";
+        }
+        return diastolicPoints
+    }
+
+
     // Call the functions
     const agePoints = ageCalc(age);
     const BMI = calcBMI(weight, heightft, heightin);
     const BMIPoints = CalcBMIPoints(BMI);
+    const systolicPointsReturn = CalcSystolicBpPoints(systolic);
+    const diastolicPointsReturn = CalcDiastolicBpPoints(diastolic);
 
-    res.json({ agePoints, BMI, BMIPoints });
+
+    res.json({ agePoints, BMI, BMIPoints , systolicPointsReturn, diastolicPointsReturn});
 });
 
 const PORT = process.env.PORT || 3000;

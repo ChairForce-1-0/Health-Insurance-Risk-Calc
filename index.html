@@ -63,16 +63,32 @@
     <div id="risktest" class="container-fluid">
         <h1>Calculate Age Points</h1>
         <form id="ageForm">
+
             <label for="age">Age:</label>
             <input type="number" id="age" name="age" required>
             <br><br>
+
+
             <label for="weight">weight:</label>
             <input type="number" id="weight" name="weight" required>
             <br><br>
+
+
             <label for="height">height (ft):</label>
             <input type="number" id="heightft" name="height" required>
             <label for="height">height (in):</label>
             <input type="number" id="heightin" name="height" required>
+
+
+            <br><br>
+
+            <label for="systolic">Enter your systolic Blood Pressure:</label>
+            <input type="number" id="systolic" name="systolic" required>
+            <br><br>
+            <label for="diastolic">Enter your diastolic Blood Pressure:</label>
+            <input type="number" id="diastolic" name="diastolic" required>
+
+
 
 
             <br><br>
@@ -99,6 +115,8 @@
         <p id="result">Age Points: <span id="agePoints"></span></p>
         <p id="result">BMI: <span id="BMI"></span></p>
         <p id="result">BMI Points: <span id="BMIPoints"></span></p>
+        <p id="result">Systolic Points: <span id="displaySystolic"></span></p>
+        <p id="result">Diastolic Points: <span id="displayDiastolic"></span></p>
 
         <!-- Button to complete the risk test -->
         <div class="btn-container"> 

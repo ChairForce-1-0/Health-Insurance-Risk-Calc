@@ -20,21 +20,23 @@ closeBtn.addEventListener("click", () => {
 });
 
 
-
+/*This function gathers health data and sends it to the server to be calculated 
+ and returns finished results */
 document.getElementById('ageForm').addEventListener('submit', function(event) {
   event.preventDefault();  
 
-  // Get the age value from the form
-  const age = document.getElementById('age').value;
+
+
+  // Gets the values from the input boxes 
+    const age = document.getElementById('age').value;
+    const weight = document.getElementById('weight').value;
+    const heightft = document.getElementById('heightft').value;
+    const heightin = document.getElementById('heightin').value;
+    const systolic = document.getElementById('systolic').value;
+    const diastolic = document.getElementById('diastolic').value;
+
   
-  const weight = document.getElementById('weight').value;
-  const heightft = document.getElementById('heightft').value;
-  const heightin = document.getElementById('heightin').value;
-
-
-
-  
-  // Make a POST request to the API
+  // Sends client data to the server and returns calculations
   fetch('http://localhost:3000/calculate-risk', {
       method: 'POST',
       headers: {
@@ -56,6 +58,10 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
       document.getElementById('agePoints').textContent = data.agePoints;
       document.getElementById('BMI').textContent = data.BMI;
       document.getElementById('BMIPoints').textContent = data.BMIPoints;
+      document.getElementById('displaySystolic').textContent = data.systolicPointsReturn;
+      document.getElementById('displayDiastolic').textContent = data.diastolicPointsReturn;
+
+
   })
   .catch(error => console.error('Error:', error));
 });
