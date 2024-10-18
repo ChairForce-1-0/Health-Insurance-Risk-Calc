@@ -2,65 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Insurance Risk Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Chair Force 1 Medical Center</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Calculate Age Points</h1>
-    <form id="ageForm">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
-        <br><br>
-        <label for="weight">weight:</label>
-        <input type="number" id="weight" name="weight" required>
-        <br><br>
-        <label for="height">height (ft):</label>
-        <input type="number" id="heightft" name="height" required>
-        <label for="height">height (in):</label>
-        <input type="number" id="heightin" name="height" required>
-
-
-        <br><br>
-        <button type="submit">Calculate</button>
-    </form>
-      <!--
-      Below prints out the points gained from the users age, this is a temperary field
-      used to test the functionallity of the API. These points will be added to the rest 
-      of the calculations to eventally return the overall risk assessment once we complete
-      all the API functions
-
-      The point are calculated based on the Assignment requirements
-          Age:
-          < 30		- 0 points
-          < 45		- 10 points
-          < 60		- 20 points
-          else		- 30 points
-
-      
-      Front end team feel free to remove this and create the site as you wish, this field is 
-      only intented to showcase that the client is fetching the API data correctly -Nick
-      
-      -->
-    <p id="result">Age Points: <span id="agePoints"></span></p>
-    <p id="result">BMI: <span id="BMI"></span></p>
-    <p id="result">BMI Points: <span id="BMIPoints"></span></p>
-
-    <!-- Button to complete the risk test -->
-    <div class="btn-container"> 
-        <button class="risk-test-button" id="openModalBtn">Take Risk Test</button>
+    <!-- Container for header video -->
+    <div class="container mt-5">
+        <div class="video-container ratio ratio-16x9">
+            <video autoplay loop muted>
+                <source src="assets/videos/hospital-staff.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
- 
-    <!-- This shows the information inside the popup window-->
-    <div id="riskTestModal" class="modal">
-        <div class="modal-inner">
-            <h2>Health Insurance Risk Test</h2>
-            <p>Please complete this test to view your risk assessment.</p>
-            <button id="closeModalBtn">Close</button>
+
+    <!-- Div for nav bar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Placeholder text</a>
+        </div>
+      </nav>
+
+    <!-- Container for About Us container -->
+     <div class="container fluid">
+
+     </div>
+
+    <!-- Container for Risk Test-->
+    <div class="container-fluid">
+        <h1>Calculate Age Points</h1>
+        <form id="ageForm">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+            <br><br>
+            <label for="weight">weight:</label>
+            <input type="number" id="weight" name="weight" required>
+            <br><br>
+            <label for="height">height (ft):</label>
+            <input type="number" id="heightft" name="height" required>
+            <label for="height">height (in):</label>
+            <input type="number" id="heightin" name="height" required>
+
+
+            <br><br>
+            <button type="submit">Calculate</button>
+        </form>
+        <!--
+        Below prints out the points gained from the users age, this is a temperary field
+        used to test the functionallity of the API. These points will be added to the rest 
+        of the calculations to eventally return the overall risk assessment once we complete
+        all the API functions
+
+        The point are calculated based on the Assignment requirements
+            Age:
+            < 30		- 0 points
+            < 45		- 10 points
+            < 60		- 20 points
+            else		- 30 points
+
+        
+        Front end team feel free to remove this and create the site as you wish, this field is 
+        only intented to showcase that the client is fetching the API data correctly -Nick
+        
+        -->
+        <p id="result">Age Points: <span id="agePoints"></span></p>
+        <p id="result">BMI: <span id="BMI"></span></p>
+        <p id="result">BMI Points: <span id="BMIPoints"></span></p>
+
+        <!-- Button to complete the risk test -->
+        <div class="btn-container"> 
+            <button class="risk-test-button" id="openModalBtn">Take Risk Test</button>
+        </div>
+    
+        <!-- This shows the information inside the popup window-->
+        <div id="riskTestModal" class="modal">
+            <div class="modal-inner">
+                <h2>Health Insurance Risk Test</h2>
+                <p>Please complete this test to view your risk assessment.</p>
+                <button id="closeModalBtn">Close</button>
+            </div>
         </div>
     </div>
     
-
     <script src="script.js"></script>
 </body>
 </html>
