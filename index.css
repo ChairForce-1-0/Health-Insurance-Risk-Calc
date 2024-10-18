@@ -1,0 +1,120 @@
+.result-value {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #007bff;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #343a40;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    transition: all 0.3s ease-in-out;
+}
+
+.card-body:hover {
+    transform: scale(1.02);
+}
+#errorMessages {
+    margin-top: 10px;
+    font-weight: bold;
+}
+/* Styling for Anout Us Video container*/
+.video-container {
+    position: relative;
+    z-index: 1;
+}
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.aboutus-container {
+    position: relative;
+    z-index: 2;
+    padding: 100px 20px;
+    color: black;
+}
+.aboutus-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Styling for Our Values Container */
+.value-icon {
+    font-size: 40px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+.value-title {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.value-description {
+    font-size: 16px;
+    color: #555;
+}
+.values-container {
+    background-color: #e2e6ea;
+    padding: 40px 0;
+}
+
+/* Colors for website */
+body {
+    background-color:#f8f9fa;
+}
+.footer {
+    background-color: #343a40;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #343a40;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+.navbar a:hover {
+    color: #007bff;
+}
+
+/* Navbar Toggler styling */
+.navbar-toggler {
+    border-color: white;
+}
+.navbar-toggler-icon {
+    background-image: none;
+}
+.navbar-toggler:focus {
+    outline: none;
+}
+.navbar-toggler-icon:before {
+    content: '\f0c9';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: white;
+    font-size: 30px;
+}
