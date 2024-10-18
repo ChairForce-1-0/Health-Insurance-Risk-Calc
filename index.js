@@ -96,6 +96,10 @@ app.post('/calculate-risk', (req, res) => {
         return diastolicPoints
     }
 
+    function CalcHistoryPoints(familyHistory){
+        return familyHistory.length*10;
+    }
+
 
     // Call the functions
     const agePoints = ageCalc(age);
@@ -103,9 +107,10 @@ app.post('/calculate-risk', (req, res) => {
     const BMIPoints = CalcBMIPoints(BMI);
     const systolicPointsReturn = CalcSystolicBpPoints(systolic);
     const diastolicPointsReturn = CalcDiastolicBpPoints(diastolic);
+    const familyHistoryPoints = CalcHistoryPoints(familyHistory);
 
 
-    res.json({ agePoints, BMI, BMIPoints , systolicPointsReturn, diastolicPointsReturn});
+    res.json({ agePoints, BMI, BMIPoints , systolicPointsReturn, diastolicPointsReturn, familyHistoryPoints});
 });
 
 const PORT = process.env.PORT || 3000;

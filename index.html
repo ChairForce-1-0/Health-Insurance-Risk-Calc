@@ -66,6 +66,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
+                        <div id="errorMessages" class="text-danger"></div>
                         <form id="ageForm">
 
                             <div class="mb-3">
@@ -95,8 +96,30 @@
                                 <label for="diastolic" class="form-label">What is your diastolic blood pressure?</label>
                                 <input type="number" id="diastolic" name="diastolic" class="form-control" required>
                             </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Family History:</label>
+                                <div>
+                                    <input type="checkbox" id="cancer" name="familyHistory" value="Cancer">
+                                    <label for="cancer">Cancer</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="alzheimers" name="familyHistory" value="Alzheimer's">
+                                    <label for="alzheimers">Alzheimer's</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="diabetes" name="familyHistory" value="Diabetes">
+                                    <label for="diabetes">Diabetes</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="none" name="familyHistory" value="None">
+                                    <label for="none">None</label>
+                                </div>
+                            </div>                                                      
                             
                             <div class="mb-3 text-center mt-3">
+                            <div id="errorMessages" class="text-danger"></div>
+
                             <button type="submit" class="btn btn-primary">Calculate Insurance Risk</button>
                             </div>
                         </form>
@@ -111,6 +134,7 @@
             <p id="result">BMI Points: <span id="BMIPoints"></span></p>
             <p id="result">Systolic Points: <span id="displaySystolic"></span></p>
             <p id="result">Diastolic Points: <span id="displayDiastolic"></span></p>
+            <p id="result">Family History Points: <span id="familyHistoryPoints"></span></p>
         </div>
     </div>
 

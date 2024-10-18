@@ -1,4 +1,7 @@
-
+#errorMessages {
+    margin-top: 10px;
+    font-weight: bold;
+}
 /* Styling for Anout Us Video container*/
 .video-container {
     position: relative;
