@@ -32,7 +32,7 @@ app.post('/calculate-risk', (req, res) => {
         let weightKg = weight * 0.453592;
         let heightInMeters = feetMeters + inchMeters;
         let BMIScore = (weightKg / Math.pow(heightInMeters, 2));
-        return BMIScore;
+        return BMIScore.toFixed(2);
     }
 
     // Function to calculate BMI points
@@ -97,7 +97,27 @@ app.post('/calculate-risk', (req, res) => {
     }
 
     function CalcHistoryPoints(familyHistory){
+        if(familyHistory.includes('None')){
+            return 0;
+        }
         return familyHistory.length*10;
+    }
+
+    function CalcTotalPoints(agePoints, BMIPoints, systolicPoints, diastolicPoints, familyHistoryPoints) {
+        const totalPoints = agePoints + BMIPoints + systolicPoints + diastolicPoints + familyHistoryPoints;
+
+        let riskCategory;
+        if (totalPoints <= 20) {
+            riskCategory = "Low Risk";
+        } else if (totalPoints <= 50) {
+            riskCategory = "Moderate Risk";
+        } else if (totalPoints <= 75) {
+            riskCategory = "High Risk";
+        } else {
+            riskCategory = "Uninsurable";
+        }
+
+        return { totalPoints, riskCategory };
     }
 
 
@@ -109,8 +129,9 @@ app.post('/calculate-risk', (req, res) => {
     const diastolicPointsReturn = CalcDiastolicBpPoints(diastolic);
     const familyHistoryPoints = CalcHistoryPoints(familyHistory);
 
+    const { totalPoints, riskCategory } = CalcTotalPoints(agePoints, BMIPoints, systolicPointsReturn, diastolicPointsReturn, familyHistoryPoints);
 
-    res.json({ agePoints, BMI, BMIPoints , systolicPointsReturn, diastolicPointsReturn, familyHistoryPoints});
+    res.json({ agePoints, BMI, BMIPoints , systolicPointsReturn, diastolicPointsReturn, familyHistoryPoints, totalPoints, riskCategory});
 });
 
 const PORT = process.env.PORT || 3000;
