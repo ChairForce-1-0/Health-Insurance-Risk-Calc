@@ -1,8 +1,14 @@
 
+// 10-17-24
 // I removed the modal/popup window as the implementation was confusing me a little. I made the old ageForm into the actual risk test now.
 // I made it look nicer so it matches the website
 // I also added calculations on the server side for the family history.
+// Also added input validation
 // Any questions let me know - Bryan
+
+// 10-18-24
+// I now added calculations for the family history, total points, and insurance risk.
+// Also allowed user to clear inputs to do another test.
 
 
 const checkboxes = document.querySelectorAll('input[name="familyHistory"]');
@@ -102,8 +108,26 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
       document.getElementById('displaySystolic').textContent = data.systolicPointsReturn;
       document.getElementById('displayDiastolic').textContent = data.diastolicPointsReturn;
       document.getElementById('familyHistoryPoints').textContent = data.familyHistoryPoints;
+      document.getElementById('displayPoints').textContent = data.totalPoints;
+      document.getElementById('displayRisk').textContent = data.riskCategory;
 
 
   })
   .catch(error => console.error('Error:', error));
+
+    // Clear button
+    document.getElementById('clearButton').addEventListener('click', function() {
+        document.getElementById('ageForm').reset(); // Clear form inputs
+
+        // Clear result values
+        document.getElementById('agePoints').textContent = '';
+        document.getElementById('BMI').textContent = '';
+        document.getElementById('BMIPoints').textContent = '';
+        document.getElementById('displaySystolic').textContent = '';
+        document.getElementById('displayDiastolic').textContent = '';
+        document.getElementById('familyHistoryPoints').textContent = '';
+        document.getElementById('displayPoints').textContent = '';
+        document.getElementById('displayRisk').textContent = '';
+    });
+
 });
