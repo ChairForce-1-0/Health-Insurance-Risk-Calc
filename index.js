@@ -7,6 +7,8 @@ app.use(cors());
 // Middleware to parse JSON bodies in requests
 app.use(express.json());
 
+app.use(express.static(__dirname));
+
 app.post('/calculate-risk', (req, res) => {
     const { age, weight, heightft, heightin, systolic, diastolic, familyHistory } = req.body;
 
