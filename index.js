@@ -7,11 +7,18 @@ app.use(cors());
 // Middleware to parse JSON bodies in requests
 app.use(express.json());
 
-app.use(express.static(__dirname));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));  // Serve the HTML file from the root directory
+  });
 
 app.get('/ping', (req, res) => {
     res.status(200).send('Server is running');
 });
+
+// Serve the CSS file
+app.get('/index.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.css'));  // Serve the CSS file from the root directory
+  });
 
 app.post('/calculate-risk', (req, res) => {
     const { age, weight, heightft, heightin, systolic, diastolic, familyHistory } = req.body;
