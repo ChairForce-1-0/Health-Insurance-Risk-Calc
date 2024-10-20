@@ -10,6 +10,23 @@
 // I now added calculations for the family history, total points, and insurance risk.
 // Also allowed user to clear inputs to do another test.
 
+// Disable the form initially
+document.getElementById('ageForm').querySelectorAll('input').forEach(input => {
+    input.disabled = true;
+});
+
+// Show the modal on page load
+window.addEventListener('load', () => {
+    const instructionModal = new bootstrap.Modal(document.getElementById('instructionModal'));
+    instructionModal.show();
+});
+
+// Enable the form when "Okay" is clicked
+document.getElementById('modalOkayButton').addEventListener('click', () => {
+    document.getElementById('ageForm').querySelectorAll('input').forEach(input => {
+        input.disabled = false;
+    });
+});
 
 const checkboxes = document.querySelectorAll('input[name="familyHistory"]');
 
