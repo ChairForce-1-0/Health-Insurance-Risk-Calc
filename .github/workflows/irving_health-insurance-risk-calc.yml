@@ -1,37 +1,47 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - Health-Insurance-Risk-Calc
 
 on:
   push:
     branches:
-      - Irving
+      - Irving  # Adjust the branch if necessary
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+      # Set up Node.js environment
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
 
-      - name: npm install, build, and test
+      # Increase memory limit and install dependencies
+      - name: Install Dependencies and Build
         run: |
+          export NODE_OPTIONS="--max-old-space-size=4096"
           npm install
           npm run build --if-present
-          npm run test --if-present
-      
-      - name: Upload artifact for deployment job
+
+      # Test the app (optional)
+      - name: Run Tests
+        run: |
+          export NODE_OPTIONS="--max-old-space-size=4096"
+          npm test --if-present
+
+      # Zip the files for deployment
+      - name: Zip Files for Deployment
+        run: zip -r release.zip ./*
+
+      # Upload the artifact for the deploy job
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -40,14 +50,17 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write
 
     steps:
-      - name: Download artifact from build job
+      - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: node-app
-      
+
+      - name: Unzip Artifact
+        run: unzip release.zip
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -55,11 +68,11 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_22027BC4EE484E299E189CD7D203EAE8 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E79CBFB849644C288AB88F0D33805F82 }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'Health-Insurance-Risk-Calc'
           slot-name: 'Production'
           package: .
-          
+
