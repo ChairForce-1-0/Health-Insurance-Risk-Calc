@@ -7,8 +7,8 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-// Middleware to parse JSON bodies in requests
-app.use(express.json());
+// Serve static files (CSS, JS, images, etc.) from the root directory
+app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));  // Serve the HTML file from the root directory
