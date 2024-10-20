@@ -22,6 +22,12 @@ jobs:
         with:
           node-version: '20.x'
 
+      # Install zip utility
+      - name: Install zip utility
+        run: |
+          choco install zip
+          refreshenv
+
       - name: npm install
         run: npm install
 
