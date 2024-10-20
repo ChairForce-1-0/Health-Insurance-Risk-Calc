@@ -10,6 +10,48 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="instructionModal" tabindex="-1" aria-labelledby="instructionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="instructionModalLabel">Instructions & Calculation Overview</h5>
+        </div>
+        <div class="modal-body">
+          <p><strong>Welcome!</strong> Please follow the instructions below to complete the insurance risk test:</p>
+          <ul>
+            <li>Provide your <strong>age, weight, and height</strong> in the fields below.</li>
+            <li>Enter your <strong>systolic</strong> (top number) and <strong>diastolic</strong> (bottom number) blood pressure readings.</li>
+            <li>Select any relevant <strong>family history conditions</strong> or choose 'None' if none apply.</li>
+            <li>When all fields are filled, click the <strong>“Calculate Insurance Risk”</strong> button to see your results.</li>
+          </ul>
+  
+          <h6 class="mt-3"><strong>How the Calculations Work:</strong></h6>
+          <p>Here’s a quick breakdown of how your inputs are used to assess your risk level:</p>
+          <ul>
+            <li><strong>Age:</strong> Older age adds more points, with higher risk for those over 60 years.</li>
+            <li><strong>Body Mass Index (BMI):</strong> Your height and weight are used to calculate BMI. Points increase for BMI values over 25, with additional points for obesity.</li>
+            <li><strong>Blood Pressure:</strong> Elevated blood pressure readings (either systolic or diastolic) increase your score.</li>
+            <li><strong>Family History:</strong> If you select any conditions (e.g., Cancer, Diabetes), additional points are added.</li>
+            <li><strong>Total Score & Risk Category:</strong> Your total score determines whether you fall into one of the following categories:</li>
+            <ul>
+              <li>0-20: Low Risk</li>
+              <li>21-50: Moderate Risk</li>
+              <li>51-75: High Risk</li>
+              <li>76+: Uninsurable</li>
+            </ul>
+          </ul>
+          <p>Be sure to enter your details accurately to get the most reliable results.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="modalOkayButton" data-bs-dismiss="modal">Okay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
     <!-- Div for Navbar -->
     <nav class="navbar navbar-expand-sm">
         <div class="container-fluid">
@@ -233,5 +275,6 @@
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 </html>

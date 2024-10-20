@@ -9,6 +9,10 @@ app.use(express.json());
 
 app.use(express.static(__dirname));
 
+app.get('/ping', (req, res) => {
+    res.status(200).send('Server is running');
+});
+
 app.post('/calculate-risk', (req, res) => {
     const { age, weight, heightft, heightin, systolic, diastolic, familyHistory } = req.body;
 
