@@ -1,0 +1,2 @@
+nodeProcessCommandLine: "node dist/index.js"
+loggingEnabled: true
