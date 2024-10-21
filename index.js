@@ -23,7 +23,7 @@ app.get('/ping', (req, res) => {
 app.get('/index.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.css'));  // Serve the CSS file from the root directory
   });
-
+  
 app.post('/calculate-risk', (req, res) => {
     const { age, weight, heightft, heightin, systolic, diastolic, familyHistory } = req.body;
 
@@ -67,7 +67,6 @@ app.post('/calculate-risk', (req, res) => {
         return BMIPoints;
     }
 
-
     function CalcSystolicBpPoints(systolic){
         let systolicPoints = 0
         if (systolic < 120){
@@ -89,7 +88,6 @@ app.post('/calculate-risk', (req, res) => {
         }
         return systolicPoints
     }
-
 
     function CalcDiastolicBpPoints(diastolic){
         let diastolicPoints = 0
@@ -136,7 +134,6 @@ app.post('/calculate-risk', (req, res) => {
 
         return { totalPoints, riskCategory };
     }
-
 
     // Call the functions
     const agePoints = ageCalc(age);
