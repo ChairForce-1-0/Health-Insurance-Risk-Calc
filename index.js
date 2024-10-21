@@ -1,14 +1,25 @@
 const express = require('express'); // Import express
+
 const path = require('path');       // Import path
+
 const app = express();              // Initialize express
+
 const cors = require('cors'); //This ensures CORS is enabled for API calls
+
 // Use the PORT from the environment or default to 3000
 const PORT = process.env.PORT || 3000;
 
+//Set up HTTP headers for security
+const helmet = require('helmet');
+app.use(helmet());
+
 app.use(cors());
 
-// Serve static files (CSS, JS, images, etc.) from the root directory
-app.use(express.static(path.join(__dirname)));
+//Middleware to parse the request body as JSON
+app.use(express.json());
+
+//Cache static assets for better performance
+app.use(express.static(path.join(__dirname), { maxAge: '1d' }));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));  // Serve the HTML file from the root directory
@@ -23,7 +34,7 @@ app.get('/ping', (req, res) => {
 app.get('/index.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.css'));  // Serve the CSS file from the root directory
   });
-  
+
 app.post('/calculate-risk', (req, res) => {
     const { age, weight, heightft, heightin, systolic, diastolic, familyHistory } = req.body;
 
@@ -62,10 +73,15 @@ app.post('/calculate-risk', (req, res) => {
         } else if (BMI >= 30 && BMI < 35) {
             BMIPoints = 75;
         } else {
-            BMIPoints = "error (BMIScore is out of range)";
+            return { error: "BMI score out of range" };
         }
         return BMIPoints;
     }
+    //
+    const BMIPointsResult = CalcBMIPoints(BMI);
+    if (BMIPointsResult.error) {
+        return res.status(400).json(BMIPointsResult);
+}
 
     function CalcSystolicBpPoints(systolic){
         let systolicPoints = 0

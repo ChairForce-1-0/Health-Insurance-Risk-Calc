@@ -50,12 +50,10 @@ checkboxes.forEach((checkbox) => {
 /*This function gathers health data and sends it to the server to be calculated 
  and returns finished results */
 document.getElementById('ageForm').addEventListener('submit', function(event) {
-  event.preventDefault();  
+    event.preventDefault();  
 
-  const errorMessages = document.getElementById('errorMessages');
-  errorMessages.textContent = ''; // Clear previous error messages
-
-
+    const errorMessages = document.getElementById('errorMessages');
+    errorMessages.textContent = ''; // Clear previous error messages
 
   // Gets the values from the input boxes 
     const age = document.getElementById('age').value;
@@ -67,8 +65,8 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
 
     // Get selected family history values
     const familyHistory = Array.from(checkboxes)
-    .filter(checkbox => checkbox.checked)
-    .map(checkbox => checkbox.value);
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
 
 
     // Validate input
@@ -98,14 +96,15 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
     if (!isValid) {
         return; // Prevent form submission if invalid
     }
-
   
-  // Sends client data to the server and returns calculations
-  fetch('http://localhost:{port}/calculate-risk', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
+// Sends client data to the server and returns calculations
+const port = window.location.port || 3000; // Use current port or default to 3000
+
+fetch(`http://localhost:${port}/calculate-risk`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
       body: JSON.stringify({
           age: age,
           weight: weight,   
@@ -127,24 +126,20 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
       document.getElementById('familyHistoryPoints').textContent = data.familyHistoryPoints;
       document.getElementById('displayPoints').textContent = data.totalPoints;
       document.getElementById('displayRisk').textContent = data.riskCategory;
-
-
   })
-  .catch(error => console.error('Error:', error));
-
-    // Clear button
-    document.getElementById('clearButton').addEventListener('click', function() {
-        document.getElementById('ageForm').reset(); // Clear form inputs
-
-        // Clear result values
-        document.getElementById('agePoints').textContent = '';
-        document.getElementById('BMI').textContent = '';
-        document.getElementById('BMIPoints').textContent = '';
-        document.getElementById('displaySystolic').textContent = '';
-        document.getElementById('displayDiastolic').textContent = '';
-        document.getElementById('familyHistoryPoints').textContent = '';
-        document.getElementById('displayPoints').textContent = '';
-        document.getElementById('displayRisk').textContent = '';
+  .catch(error => {
+        console.error('Error:', error);
+        errorMessages.textContent = 'An error occurred. Please try again later.';
     });
-
 });
+
+// Clear form and results
+document.getElementById('clearButton').addEventListener('click', function() {
+    document.getElementById('ageForm').reset(); // Clear form inputs
+
+    // Clear result values
+    ['agePoints', 'BMI', 'BMIPoints', 'displaySystolic', 'displayDiastolic',
+        'familyHistoryPoints', 'displayPoints', 'displayRisk'].forEach(id => {
+           document.getElementById(id).textContent = '';
+       });
+   });
