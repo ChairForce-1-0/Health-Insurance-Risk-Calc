@@ -7,9 +7,6 @@ const PORT = process.env.PORT || 3000;  // Use the PORT from the environment or 
 // Serve static files from the project root (HTML, CSS, images, etc.)
 app.use(express.static(path.join(__dirname, '../')));
 
-const cors = require('cors'); // This ensures CORS is enabled for API calls
-app.use(cors());
-
 // Middleware to parse the request body as JSON
 app.use(express.json());
 
