@@ -21,6 +21,10 @@ app.get('/ping', (req, res) => {
     res.status(200).send('Server is running');
 });
 
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
 // Serve the CSS file (optional, as static middleware should handle it)
 app.get('/index.css', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.css'));  // Adjust path for CSS if needed
