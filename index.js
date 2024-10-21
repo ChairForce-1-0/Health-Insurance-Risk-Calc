@@ -2,8 +2,11 @@ const express = require('express'); // Import express
 const app = express();              // Initialize express
 const cors = require('cors');
 
-app.use(cors());
-
+app.use(cors({
+    origin: '*',  // Allows all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow specific methods
+    allowedHeaders: ['Content-Type', 'Authorization'],  // Allow specific headers
+}));
 // Middleware to parse JSON bodies in requests
 app.use(express.json());
 
