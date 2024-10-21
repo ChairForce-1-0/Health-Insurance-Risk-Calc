@@ -1,20 +1,20 @@
 {
   "name": "health-insurance-risk-calc",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web app to calculate health insurance risk based on user inputs.",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
-    "build": "./node_modules/.bin/babel index.js -d dist",
+    "start": "node dist/index.js",
+    "dev": "nodemon index.js",
+    "build": "babel . --out-dir dist --ignore node_modules",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["insurance", "risk", "health", "nodejs", "express"],
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.21.1",
-    "health-insurance-risk-calc": "file:"
+    "express": "^4.21.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.7",
