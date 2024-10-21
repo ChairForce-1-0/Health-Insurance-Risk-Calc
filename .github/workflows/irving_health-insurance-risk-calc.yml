@@ -85,8 +85,6 @@ jobs:
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
-        env:
-          NODE_OPTIONS: "--max-old-space-size=8192"
         with:
           app-name: 'Health-Insurance-Risk-Calc'
           slot-name: 'Production'
