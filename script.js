@@ -132,10 +132,7 @@ fetch(`${baseURL}/calculate-risk`, {
       document.getElementById('displayPoints').textContent = data.totalPoints;
       document.getElementById('displayRisk').textContent = data.riskCategory;
   })
-  .catch(error => {
-        console.error('Error:', error);
-        errorMessages.textContent = 'An error occurred. Please try again later.';
-    });
+
 });
 
 // Clear form and results
