@@ -6,7 +6,8 @@
   "scripts": {
     "start": "babel-node index.js",
     "build": "./node_modules/.bin/babel index.js -d dist",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "postinstall": "npm prune --production"
   },
   "keywords": [],
   "author": "",

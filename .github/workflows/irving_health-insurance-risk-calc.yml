@@ -25,6 +25,8 @@ jobs:
       - name: npm install
         run: npm install
 
+      - run: npm prune --production
+
       - name: Install Babel CLI globally
         run: npm install -g @babel/cli
 
