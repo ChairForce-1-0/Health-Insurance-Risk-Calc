@@ -115,7 +115,12 @@ fetch(`${baseURL}/calculate-risk`, {
           familyHistory: familyHistory
       })
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);  // Add error handling for non-200 responses
+    }
+    return response.json();
+})
   .then(data => {
       // Display the info from the server in HTML
       document.getElementById('agePoints').textContent = data.agePoints;
