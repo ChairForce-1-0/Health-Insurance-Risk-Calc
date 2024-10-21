@@ -3,7 +3,7 @@ const path = require('path');       // Import path
 const app = express();              // Initialize express
 const cors = require('cors'); //This ensures CORS is enabled for API calls
 // Use the PORT from the environment or default to 3000
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -151,7 +151,6 @@ app.post('/calculate-risk', (req, res) => {
     res.json({ agePoints, BMI, BMIPoints , systolicPointsReturn, diastolicPointsReturn, familyHistoryPoints, totalPoints, riskCategory});
 });
 
-// Listen for requests
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  });
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
