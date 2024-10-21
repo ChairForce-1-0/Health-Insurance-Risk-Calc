@@ -101,7 +101,7 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
 
   
   // Sends client data to the server and returns calculations
-  fetch('/api/calculate-risk', {
+  fetch('/api/src/functions/calculate-risk', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
