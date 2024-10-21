@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/calculate-risk', (req, res) => {
+    console.log('Request body:', req.body);
     const { age, weight, heightft, heightin, systolic, diastolic, familyHistory } = req.body;
 
     // Function to calculate points based on age
