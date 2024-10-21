@@ -35,7 +35,7 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
 
   
   // Make a POST request to the API
-  fetch('http://localhost:3000/calculate-risk', {
+  fetch('https://health-insurance-fqgdfaaugdche4ah.centralus-01.azurewebsites.net/calculate-risk', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
