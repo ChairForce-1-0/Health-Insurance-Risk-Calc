@@ -90,6 +90,6 @@ jobs:
         with:
           app-name: 'Health-Insurance-Risk-Calc'
           slot-name: 'Production'
-          package: .
+          package: ./node-app
           
 
