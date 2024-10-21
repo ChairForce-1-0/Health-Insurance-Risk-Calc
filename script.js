@@ -101,7 +101,7 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
 
   
   // Sends client data to the server and returns calculations
-  fetch('https://health-insurance-test-cdhjgtgphsazgmhw.centralus-01.azurewebsites.net/calculate-risk', {
+  fetch('/api/calculate-risk', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
