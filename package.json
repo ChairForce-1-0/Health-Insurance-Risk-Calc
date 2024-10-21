@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
+    "build": "babel . --out-dir dist --ignore node_modules",
     "dev": "nodemon index.js",
-    "build": "babel . --out-dir dist --ignore node_modules && copyfiles -u 1 './*.html' './*.css' dist",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [
