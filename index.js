@@ -143,7 +143,18 @@ app.post('/calculate-risk', (req, res) => {
     res.json({ agePoints, BMI, BMIPoints , systolicPointsReturn, diastolicPointsReturn, familyHistoryPoints, totalPoints, riskCategory});
 });
 
+
+
 const PORT = process.env.PORT || 3000;
+
+// Middleware to parse incoming JSON
+app.use(express.json());
+
+
+// Serve static files
+app.use(express.static(__dirname));
+
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
