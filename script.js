@@ -97,10 +97,10 @@ document.getElementById('ageForm').addEventListener('submit', function(event) {
         return; // Prevent form submission if invalid
     }
   
-// Sends client data to the server and returns calculations
-const port = window.location.port || 3000; // Use current port or default to 3000
+// Determine the base URL dynamically
+const baseURL = window.location.origin; // This will point to the Azure Web App URL in production
 
-fetch(`http://localhost:${port}/calculate-risk`, {
+fetch(`${baseURL}/calculate-risk`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
