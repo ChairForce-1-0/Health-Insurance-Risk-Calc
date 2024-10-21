@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000;  // Use the PORT from the environment or 
 
 // Serve static files from the project root (HTML, CSS, images, etc.)
 app.use(express.static(path.join(__dirname, '../')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Middleware to parse the request body as JSON
 app.use(express.json());
